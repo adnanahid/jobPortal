@@ -5,7 +5,7 @@ import team2 from "../../assets/team2.webp";
 
 const Banner = () => {
   return (
-    <div className="bg-base-200 my-12 lg:h-[500px] bgBanner">
+    <div className="bg-base-200 my-12 lg:h-[500px] ">
       <div className="hero-content flex-col lg:flex-row-reverse ">
         <div className="w-1/2 ">
           <motion.img
@@ -24,7 +24,7 @@ const Banner = () => {
         <motion.div
           animate={{ x: -40 }}
           transition={{ duration: 1 }}
-          className="w-1/2 pl-28 pt-24"
+          className="w-1/2 pl-36 pt-24"
         >
           <h1 className="text-5xl font-bold">
             The Easiest Way <br /> to Get Your

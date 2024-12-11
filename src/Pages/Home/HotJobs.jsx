@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import HotJobCard from "./HotJobCard";
 
 const HotJobs = () => {
   const [jobs, setJobs] = useState([]);
@@ -10,7 +11,16 @@ const HotJobs = () => {
         console.log(jobs);
       });
   }, []);
-  return <div></div>;
+  return (
+    <div>
+      <h1 className="text-center text-4xl font-bold">Jobs of the day</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-12">
+        {jobs.map((job) => (
+          <HotJobCard key={job._id} job={job}></HotJobCard>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default HotJobs;

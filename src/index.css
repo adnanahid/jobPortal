@@ -2,8 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-.bgBanner{
-    background-image: url("./assets/bgbanner.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-}
