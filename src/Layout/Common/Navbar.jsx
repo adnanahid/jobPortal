@@ -6,14 +6,8 @@ const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
   const handleSignOut = () => {
     signOutUser()
-      .then(() => {
-        // Sign-out successful.
-        console.log("signOutSuccessful");
-      })
-      .catch((error) => {
-        // An error happened.
-        console.log(error);
-      });
+      .then(() => {})
+      .catch((error) => {});
   };
   return (
     <div className="navbar bg-base-100">
@@ -40,21 +34,7 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
+              <NavLink to="/">Home</NavLink>
             </li>
           </ul>
         </div>
@@ -62,7 +42,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-center hidden lg:flex">
         <div>
-          <NavLink>Home</NavLink>
+          <NavLink to="/">Home</NavLink>
           <NavLink></NavLink>
           <NavLink></NavLink>
         </div>
