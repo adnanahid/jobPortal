@@ -2,10 +2,12 @@ import React, { useContext, useState } from "react";
 import Lottie from "lottie-react";
 import LoginAnimation from "../../assets/LoginAnimation.json";
 import AuthContext from "../../Context/AuthContext";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { user, setUser, loading, setLoading, signInUser } =
     useContext(AuthContext);
+  const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,6 +24,7 @@ const Login = () => {
         console.log(user);
         // You can clear the form or redirect here
         form.reset();
+        navigate("/");
       })
       .catch((error) => {
         const errorMessage = error.message;

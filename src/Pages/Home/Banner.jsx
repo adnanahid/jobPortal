@@ -1,27 +1,38 @@
 import React from "react";
 import { motion } from "motion/react";
+import team1 from "../../assets/team1.webp";
+import team2 from "../../assets/team2.webp";
 
 const Banner = () => {
   return (
-    <div className="hero bg-base-200 my-24 lg:h-[600px] relative">
+    <div className="bg-base-200 my-12 lg:h-[500px] bgBanner">
       <div className="hero-content flex-col lg:flex-row-reverse ">
-        <div className="flex-1 flex">
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
-            className="max-w-sm rounded-lg shadow-2xl absolute right-24 top-56"
+        <div className="w-1/2 ">
+          <motion.img
+            src={team1}
+            animate={{ y: [50, 100, 50] }}
+            transition={{ duration: 10, repeat: Infinity }}
+            className="max-w-sm w-64 rounded-t-[40px] rounded-br-[40px] border-l-4 border-b-4 border-blue-400 shadow-2xl"
           />
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
-            className="max-w-sm rounded-lg shadow-2xl absolute right-96 bottom-48"
+          <motion.img
+            src={team2}
+            animate={{ x: [100, 150, 100] }}
+            transition={{ duration: 10, delay: 5, repeat: Infinity }}
+            className="max-w-sm w-64 rounded-t-[40px] rounded-br-[40px] border-l-4 border-b-4 border-blue-400 shadow-2xl"
           />
         </div>
-        <motion.div animate={{ x: -40 }} transition={{duration: 1}} className="flex-1">
+        <motion.div
+          animate={{ x: -40 }}
+          transition={{ duration: 1 }}
+          className="w-1/2 pl-28 pt-24"
+        >
           <h1 className="text-5xl font-bold">
-            The Easiest Way to Get Your New Job
+            The Easiest Way <br /> to Get Your
+            <br />
+            New Job
           </h1>
           <p className="py-6">
-            Each month, more than 3 million job seekers turn to website in their
-            search for work, making over 140,000 applications every single day
+            Each month, more than 3 million job seekers turn to website <br /> in their search for work, making <br /> over 140,000 applications every single day
           </p>
           <button className="btn btn-primary">Get Started</button>
         </motion.div>
