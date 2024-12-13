@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import HotJobCard from "./HotJobCard";
+import AuthContext from "../../Context/AuthContext";
 
 const HotJobs = () => {
+  const { loading } = useContext(AuthContext);
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
     fetch("http://localhost:3000/jobs")
@@ -10,6 +12,13 @@ const HotJobs = () => {
         setJobs(data);
       });
   }, []);
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
+  }
   return (
     <div>
       <h1 className="text-center text-4xl font-bold">Jobs of the day</h1>

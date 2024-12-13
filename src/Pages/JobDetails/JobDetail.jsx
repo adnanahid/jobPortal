@@ -1,25 +1,9 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const JobDetail = () => {
   const data = useLoaderData();
 
-  // Helper function to format currency
-  const formatCurrency = (value, currency) =>
-    new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency,
-    }).format(value);
-
-  // Helper function to format date
-  const formatDate = (dateString) =>
-    new Date(dateString).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-
-  // Handle case where data is undefined or null
   if (!data) {
     return <p>Loading job details...</p>;
   }
@@ -75,8 +59,7 @@ const JobDetail = () => {
       <div className="flex items-center justify-between">
         <div>
           <span className="text-2xl font-bold text-blue-600">
-            {formatCurrency(data.salaryRange.max, data.salaryRange.currency)} -{" "}
-            {formatCurrency(data.salaryRange.min, data.salaryRange.currency)}
+            {data.salaryRange.max} - {data.salaryRange.min}
           </span>
           <span className="text-gray-600">/Month</span>
         </div>
@@ -85,13 +68,11 @@ const JobDetail = () => {
         className="w-full my-3 bg-blue-500 text-white font-bold py-2 px-4 rounded"
         aria-label="Apply for this job"
       >
-        Apply Now
+        <Link to={`/apply-job/${data._id}`}>Apply Now</Link>
       </button>
       <p className="text-gray-600 mt-4">
-        Application Deadline:{" "}
-        {data.applicationDeadline
-          ? formatDate(data.applicationDeadline)
-          : "Not specified"}
+        Application Deadline:
+        {data.applicationDeadline ? data.applicationDeadline : "Not specified"}
       </p>
       <p className="text-gray-600">
         Contact HR: {data.hr_name || "Not available"} (

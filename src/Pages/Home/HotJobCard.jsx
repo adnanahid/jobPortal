@@ -12,9 +12,10 @@ const HotJobCard = ({ job }) => {
     location,
     salaryRange,
   } = job;
+
+
   return (
-    //
-    <div className="max-w-sm h-[450px] flex flex-col rounded overflow-hidden shadow-lg p-4 bg-white">
+    <div className="max-w-sm h-[490px] flex flex-col rounded overflow-hidden shadow-lg p-4">
       <div className="flex items-center mb-4">
         <img
           src={company_logo}
@@ -35,21 +36,29 @@ const HotJobCard = ({ job }) => {
       <p className="text-gray-700 mb-4 flex-grow">{description}</p>
       <div className="flex flex-wrap mb-4 ">
         {requirements.map((req, idx) => (
-          <span key={idx} className="bg-gray-200 text-gray-800 text-sm font-semibold mr-2 px-2.5 py-0.5 mt-1 rounded">
+          <span
+            key={idx}
+            className="bg-gray-200 text-gray-800 text-sm font-semibold mr-2 px-2.5 py-0.5 mt-1 rounded"
+          >
             {req}
           </span>
         ))}
       </div>
-      <div className="flex items-center justify-between">
-        <span className="text-2xl font-bold text-blue-600">$500</span>
-        <span className="text-gray-600">/Hour</span>
-        <Link
-          to={`/jobDetails/${_id}`}
-          className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
-        >
-          Apply Now
-        </Link>
+      <div className="flex items-center justify-between mb-5">
+        <div>
+          <span className="text-lg font-bold text-blue-600">
+            {salaryRange.max} - {salaryRange.min}
+          </span>
+          <span className="text-gray-600">/Month</span>
+        </div>
       </div>
+
+      <Link
+        to={`/jobDetails/${_id}`}
+        className="bg-blue-500 text-white font-bold py-2 px-4 rounded w-full text-center mb-5"
+      >
+        Details
+      </Link>
     </div>
   );
 };
