@@ -41,10 +41,10 @@ const Navbar = () => {
         <a className="btn btn-ghost text-xl">daisyUI</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <div>
+        <div className="space-x-5">
           <NavLink to="/">Home</NavLink>
-          <NavLink></NavLink>
-          <NavLink></NavLink>
+          <NavLink to="/my-applications">My Applications</NavLink>
+          <NavLink to="/add-job">Add-job</NavLink>
         </div>
       </div>
       <div className="navbar-end gap-2">

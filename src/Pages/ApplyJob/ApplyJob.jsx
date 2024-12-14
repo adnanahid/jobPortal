@@ -44,7 +44,7 @@ const ApplyJob = () => {
           //     timer: 1500,
           //   });
           alert("successful");
-          navigate("/");
+          navigate("/my-applications");
         }
       });
   };
