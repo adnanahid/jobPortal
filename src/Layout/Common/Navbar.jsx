@@ -45,6 +45,7 @@ const Navbar = () => {
           <NavLink to="/">Home</NavLink>
           <NavLink to="/my-applications">My Applications</NavLink>
           <NavLink to="/add-job">Add-job</NavLink>
+          <NavLink to="/my-posted-job">My Posted job</NavLink>
         </div>
       </div>
       <div className="navbar-end gap-2">
