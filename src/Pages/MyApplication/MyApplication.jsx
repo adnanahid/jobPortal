@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../../Context/AuthContext";
+import { FaPenNib } from "react-icons/fa";
 
+import { FaRegTrashAlt } from "react-icons/fa";
 const MyApplication = () => {
   const { user } = useContext(AuthContext);
   const [jobs, setJobs] = useState([]);
@@ -15,59 +17,31 @@ const MyApplication = () => {
 
   console.log(jobs);
   return (
-    <div>
+    <div className="max-w-5xl mx-auto my-24">
       <h2 className="text-3xl">My Applications: {jobs.length}</h2>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
           <thead>
-            <tr>
-              <th>
-                <label>
-                  <input type="checkbox" className="checkbox" />
-                </label>
-              </th>
+            <tr className="text-center">
+              <th>index</th>
               <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+              <th>Location</th>
+              <th>Update</th>
+              <th>Delete</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             {/* row 1 */}
-            {jobs.map((job) => (
-              <tr key={job._id}>
+            {jobs.map((job, index) => (
+              <tr key={job._id} className="text-center">
+                <th>{index + 1}</th>
+                <td className="font-bold">{job.title}</td>
+                <td>{job.location}</td>
+                <td><button className="btn btn-ghost"><FaPenNib /></button></td>
                 <th>
-                  <label>
-                    <input type="checkbox" className="checkbox" />
-                  </label>
-                </th>
-                <td>
-                  <div className="flex items-center gap-3">
-                    <div className="avatar">
-                      <div className="mask mask-squircle h-12 w-12">
-                        <img
-                          src={job.company_logo}
-                          alt="Avatar Tailwind CSS Component"
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <div className="font-bold">{job.title}</div>
-                      <div className="text-sm opacity-50">{job.location}</div>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  Zemlak, Daniel and Leannon
-                  <br />
-                  <span className="badge badge-ghost badge-sm">
-                    Desktop Support Technician
-                  </span>
-                </td>
-                <td>Purple</td>
-                <th>
-                  <button className="btn btn-ghost btn-xs">X</button>
+                  <button className="btn btn-ghost"><FaRegTrashAlt /></button>
                 </th>
               </tr>
             ))}

@@ -3,14 +3,15 @@ import Lottie from "lottie-react";
 import LoginAnimation from "../../assets/LoginAnimation.json";
 import AuthContext from "../../Context/AuthContext";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 const Login = () => {
   const { user, setUser, loading, setLoading, signInUser } =
     useContext(AuthContext);
   const location = useLocation();
-  const from = location.state || "/"
+  const from = location.state || "/";
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
   const handleSubmit = (e) => {
@@ -23,8 +24,12 @@ const Login = () => {
 
     signInUser(email, password)
       .then((userCredential) => {
-        // Signed up
         const user = userCredential.user;
+        axios
+          .post("http://localhost:3000/jwt", {
+            email: user.email,
+          })
+          .then((data) => console.log(data.data));
         //toast
         toast.success("🦄 Wow so easy!", {
           position: "top-right",

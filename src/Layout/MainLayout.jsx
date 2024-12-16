@@ -1,18 +1,17 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
-import Navbar from './Common/Navbar';
-import Footer from './Common/Footer';
+import React from "react";
+import { Outlet } from "react-router-dom";
+import Navbar from "./Common/Navbar";
+import Footer from "./Common/Footer";
+import Swal from "sweetalert2";
 
 const MainLayout = () => {
-
-
-    return (
-        <div className='max-w-7xl mx-auto'>
-            <Navbar></Navbar>
-            <Outlet></Outlet>
-            <Footer></Footer>
-        </div>
-    );
+  return (
+    <div className="max-w-7xl mx-auto">
+      <Navbar></Navbar>
+      <Outlet></Outlet>
+      <Footer></Footer>
+    </div>
+  );
 };
 
 export default MainLayout;

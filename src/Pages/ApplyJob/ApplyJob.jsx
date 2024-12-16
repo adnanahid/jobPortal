@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import AuthContext from "../../Context/AuthContext";
-import swal from "sweetalert2";
+import Swal from "sweetalert2";
 
 const ApplyJob = () => {
   const { id } = useParams();
@@ -36,14 +36,13 @@ const ApplyJob = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          //   swal.fire({
-          //     position: "top-end",
-          //     icon: "success",
-          //     title: "Your work has been saved",
-          //     showConfirmButton: false,
-          //     timer: 1500,
-          //   });
-          alert("successful");
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Your work has been saved",
+              showConfirmButton: false,
+              timer: 1500,
+            });
           navigate("/my-applications");
         }
       });
