@@ -3,16 +3,15 @@ import AuthContext from "../../Context/AuthContext";
 import { FaPenNib } from "react-icons/fa";
 
 import { FaRegTrashAlt } from "react-icons/fa";
+import axios from "axios";
 const MyApplication = () => {
   const { user } = useContext(AuthContext);
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/my-applications?email=${user.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setJobs(data);
-      });
+    axios
+      .get(`http://localhost:3000/my-applications?email=${user.email}`, {withCredentials: true})
+      .then((res) => setJobs(res.data));
   }, [user.email]);
 
   console.log(jobs);
@@ -39,9 +38,15 @@ const MyApplication = () => {
                 <th>{index + 1}</th>
                 <td className="font-bold">{job.title}</td>
                 <td>{job.location}</td>
-                <td><button className="btn btn-ghost"><FaPenNib /></button></td>
+                <td>
+                  <button className="btn btn-ghost">
+                    <FaPenNib />
+                  </button>
+                </td>
                 <th>
-                  <button className="btn btn-ghost"><FaRegTrashAlt /></button>
+                  <button className="btn btn-ghost">
+                    <FaRegTrashAlt />
+                  </button>
                 </th>
               </tr>
             ))}

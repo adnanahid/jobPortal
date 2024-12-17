@@ -26,9 +26,13 @@ const Login = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         axios
-          .post("http://localhost:3000/jwt", {
-            email: user.email,
-          })
+          .post(
+            "http://localhost:3000/jwt",
+            {
+              email: user.email,
+            },
+            { withCredentials: true }
+          )
           .then((data) => console.log(data.data));
         //toast
         toast.success("🦄 Wow so easy!", {
